@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IVR Studio - Professional IVR Audio Generator for PBX Systems</title>
+<meta name="description" content="Generate professional IVR audio files for Asterisk and FreeSWITCH PBX systems. Neural text-to-speech with YouTube background music mixing.">
+<style>
+:root{--bg:#09090c;--surface:#111118;--card:#16161f;--border:#2a2a38;--primary:#3b82f6;--amber:#f59e0b;--green:#22c55e;--text:#e8e8f0;--muted:#6b6b80}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,-apple-system,sans-serif;line-height:1.6}
+.container{max-width:1100px;margin:0 auto;padding:0 24px}
+.lang-bar{text-align:right;padding:12px 24px;position:fixed;top:0;right:0;z-index:100}
+.lang-bar select{background:var(--card);color:var(--text);border:1px solid var(--border);padding:6px 12px;border-radius:8px;font-size:.85rem;cursor:pointer}
+.hero{padding:80px 0 60px;text-align:center}
+.hero h1{font-size:3rem;font-weight:800;margin-bottom:16px;background:linear-gradient(135deg,var(--primary),var(--amber));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero .sub{font-size:1.2rem;color:var(--muted);max-width:600px;margin:0 auto 32px}
+.hero .badge{display:inline-block;background:var(--card);border:1px solid var(--border);padding:6px 16px;border-radius:20px;font-size:.85rem;color:var(--amber);margin-bottom:24px}
+.features{padding:60px 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.feature{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:32px}
+.feature .icon{font-size:2rem;margin-bottom:12px}
+.feature h3{font-size:1.1rem;margin-bottom:8px;color:var(--primary)}
+.feature p{color:var(--muted);font-size:.9rem}
+.section{padding:60px 0}
+.section-title{text-align:center;font-size:2rem;font-weight:700;margin-bottom:40px}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px}
+.step{text-align:center;padding:24px}
+.step .num{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;background:var(--primary);color:white;font-size:1.2rem;font-weight:700;margin-bottom:16px}
+.step h4{margin-bottom:8px}
+.step p{color:var(--muted);font-size:.85rem}
+.pricing{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;max-width:700px;margin:0 auto}
+.plan{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:32px;text-align:center}
+.plan.featured{border-color:var(--primary);position:relative}
+.plan.featured::before{content:'';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--primary);color:white;padding:4px 16px;border-radius:12px;font-size:.7rem;font-weight:700;letter-spacing:1px}
+.plan h3{font-size:1.3rem;margin-bottom:8px}
+.plan .price{font-size:2.5rem;font-weight:800;color:var(--primary);margin-bottom:4px}
+.plan .price span{font-size:1rem;color:var(--muted);font-weight:400}
+.plan ul{list-style:none;text-align:left;margin:20px 0}
+.plan ul li{padding:8px 0;font-size:.9rem;color:var(--muted);border-bottom:1px solid var(--border)}
+.plan ul li::before{content:'\2713 ';color:var(--green)}
+.plan .btn{display:inline-block;padding:12px 32px;border-radius:10px;text-decoration:none;font-weight:600;font-size:.95rem;margin-top:16px}
+.btn-primary{background:var(--primary);color:white}
+.btn-outline{background:transparent;border:1px solid var(--border);color:var(--text)}
+.formats{display:flex;justify-content:center;gap:32px;flex-wrap:wrap;margin-top:32px}
+.format{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px 28px;text-align:center}
+.format .name{font-weight:700;font-size:1.1rem}
+.format .desc{color:var(--muted);font-size:.8rem;margin-top:4px}
+.compat{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;margin-top:24px}
+.compat-item{text-align:center}
+.compat-item .logo{font-size:2rem;margin-bottom:4px}
+.compat-item .name{font-size:.85rem;color:var(--muted)}
+.footer{padding:40px 0;border-top:1px solid var(--border);text-align:center;color:var(--muted);font-size:.85rem;margin-top:60px}
+.footer a{color:var(--primary);text-decoration:none}
+@media(max-width:768px){.hero h1{font-size:2rem}.features{grid-template-columns:1fr}.pricing{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="lang-bar">
+<select id="langSelect" onchange="setLang(this.value)">
+<option value="en">English</option>
+<option value="it">Italiano</option>
+<option value="de">Deutsch</option>
+<option value="es">Espanol</option>
+<option value="fr">Francais</option>
+<option value="zh">Chinese</option>
+<option value="ru">Russian</option>
+</select>
+</div>
+
+<div class="container">
+
+<section class="hero">
+<div class="badge">FreePBX Module</div>
+<h1>IVR Studio</h1>
+<p class="sub" data-i18n="hero_sub">Generate professional IVR audio files for your PBX system. Combine YouTube background music with neural text-to-speech in minutes.</p>
+</section>
+
+<section class="features">
+<div class="feature"><div class="icon">&#127925;</div><h3 data-i18n="f1_title">YouTube Music Search</h3><p data-i18n="f1_desc">Search and select royalty-free background music directly from YouTube. Download and extract audio automatically.</p></div>
+<div class="feature"><div class="icon">&#128483;</div><h3 data-i18n="f2_title">Neural Text-to-Speech</h3><p data-i18n="f2_desc">High-quality Italian and multilingual voices powered by Microsoft Edge-TTS (free) or ElevenLabs (premium).</p></div>
+<div class="feature"><div class="icon">&#127899;</div><h3 data-i18n="f3_title">Professional Audio Mixing</h3><p data-i18n="f3_desc">Automatic voice + music mixing with loudness normalization, configurable delay, fade-out, and volume control.</p></div>
+<div class="feature"><div class="icon">&#128222;</div><h3 data-i18n="f4_title">PBX-Ready Export</h3><p data-i18n="f4_desc">Export directly to Asterisk (.ulaw 8kHz) and FreeSWITCH (.wav 16kHz) formats. Import to System Recordings with one click.</p></div>
+<div class="feature"><div class="icon">&#128268;</div><h3 data-i18n="f5_title">FreePBX Integration</h3><p data-i18n="f5_desc">Native FreePBX module. Install from GUI, generate audio, import to Asterisk - all without leaving FreePBX.</p></div>
+<div class="feature"><div class="icon">&#128274;</div><h3 data-i18n="f6_title">Secure Cloud Processing</h3><p data-i18n="f6_desc">Audio generation happens in the cloud. Your FreePBX only sends text and receives the finished audio file.</p></div>
+</section>
+
+<section class="section">
+<h2 class="section-title" data-i18n="how_title">How It Works</h2>
+<div class="steps">
+<div class="step"><div class="num">1</div><h4 data-i18n="s1_title">Choose Music</h4><p data-i18n="s1_desc">Search YouTube for royalty-free background music and select your track.</p></div>
+<div class="step"><div class="num">2</div><h4 data-i18n="s2_title">Write Your Script</h4><p data-i18n="s2_desc">Type your IVR message, select a neural voice, and configure audio settings.</p></div>
+<div class="step"><div class="num">3</div><h4 data-i18n="s3_title">Generate</h4><p data-i18n="s3_desc">Our cloud engine mixes voice and music with professional audio processing.</p></div>
+<div class="step"><div class="num">4</div><h4 data-i18n="s4_title">Import to PBX</h4><p data-i18n="s4_desc">One click to import the file into Asterisk System Recordings. Ready to use.</p></div>
+</div>
+</section>
+
+<section class="section">
+<h2 class="section-title" data-i18n="formats_title">Output Formats</h2>
+<div class="formats">
+<div class="format"><div class="name">Asterisk</div><div class="desc">.ulaw - mu-law 8kHz mono</div></div>
+<div class="format"><div class="name">FreeSWITCH</div><div class="desc">.wav - PCM 16kHz mono</div></div>
+<div class="format"><div class="name">Preview</div><div class="desc">.mp3 - 128kbps</div></div>
+</div>
+</section>
+
+<section class="section">
+<h2 class="section-title" data-i18n="compat_title">Compatibility</h2>
+<div class="compat">
+<div class="compat-item"><div class="logo">&#128225;</div><div class="name">FreePBX 15</div></div>
+<div class="compat-item"><div class="logo">&#128225;</div><div class="name">FreePBX 16</div></div>
+<div class="compat-item"><div class="logo">&#128225;</div><div class="name">FreePBX 17</div></div>
+<div class="compat-item"><div class="logo">&#11088;</div><div class="name">Asterisk</div></div>
+<div class="compat-item"><div class="logo">&#11088;</div><div class="name">FreeSWITCH</div></div>
+</div>
+</section>
+
+<section class="section">
+<h2 class="section-title" data-i18n="pricing_title">Pricing</h2>
+<div class="pricing">
+<div class="plan">
+<h3>Free</h3>
+<div class="price">&euro;0<span>/mo</span></div>
+<ul>
+<li data-i18n="p_free_1">3 generations per month</li>
+<li data-i18n="p_free_2">Edge-TTS neural voices</li>
+<li data-i18n="p_free_3">YouTube music search</li>
+<li data-i18n="p_free_4">Asterisk .ulaw export</li>
+<li data-i18n="p_free_5">System Recordings import</li>
+</ul>
+<a href="#" class="btn btn-outline" data-i18n="btn_free">Get Started</a>
+</div>
+<div class="plan featured">
+<h3>Premium</h3>
+<div class="price">&euro;99<span>/year</span></div>
+<ul>
+<li data-i18n="p_prem_1">Unlimited generations</li>
+<li data-i18n="p_prem_2">ElevenLabs premium voices</li>
+<li data-i18n="p_prem_3">FreeSWITCH .wav export</li>
+<li data-i18n="p_prem_4">Configurable delay &amp; fade-out</li>
+<li data-i18n="p_prem_5">Adjustable music volume</li>
+<li data-i18n="p_prem_6">Priority support</li>
+</ul>
+<a href="#" class="btn btn-primary" data-i18n="btn_prem">Buy Premium</a>
+</div>
+</div>
+</section>
+
+<footer class="footer">
+<p><strong>IVR Studio</strong> by Massimiliano Iavazzo</p>
+<p style="margin-top:8px">Contact: <a href="mailto:info@viama.it">info@viama.it</a> | <a href="https://www.viama.it">www.viama.it</a></p>
+<p style="margin-top:16px">&copy; 2026 All rights reserved.</p>
+</footer>
+
+</div>
+
+<script>
+var translations = {
+en: {
+hero_sub: "Generate professional IVR audio files for your PBX system. Combine YouTube background music with neural text-to-speech in minutes.",
+f1_title: "YouTube Music Search", f1_desc: "Search and select royalty-free background music directly from YouTube. Download and extract audio automatically.",
+f2_title: "Neural Text-to-Speech", f2_desc: "High-quality Italian and multilingual voices powered by Microsoft Edge-TTS (free) or ElevenLabs (premium).",
+f3_title: "Professional Audio Mixing", f3_desc: "Automatic voice + music mixing with loudness normalization, configurable delay, fade-out, and volume control.",
+f4_title: "PBX-Ready Export", f4_desc: "Export directly to Asterisk (.ulaw 8kHz) and FreeSWITCH (.wav 16kHz) formats. Import to System Recordings with one click.",
+f5_title: "FreePBX Integration", f5_desc: "Native FreePBX module. Install from GUI, generate audio, import to Asterisk - all without leaving FreePBX.",
+f6_title: "Secure Cloud Processing", f6_desc: "Audio generation happens in the cloud. Your FreePBX only sends text and receives the finished audio file.",
+how_title: "How It Works", s1_title: "Choose Music", s1_desc: "Search YouTube for royalty-free background music and select your track.",
+s2_title: "Write Your Script", s2_desc: "Type your IVR message, select a neural voice, and configure audio settings.",
+s3_title: "Generate", s3_desc: "Our cloud engine mixes voice and music with professional audio processing.",
+s4_title: "Import to PBX", s4_desc: "One click to import the file into Asterisk System Recordings. Ready to use.",
+formats_title: "Output Formats", compat_title: "Compatibility", pricing_title: "Pricing",
+p_free_1: "3 generations per month", p_free_2: "Edge-TTS neural voices", p_free_3: "YouTube music search", p_free_4: "Asterisk .ulaw export", p_free_5: "System Recordings import",
+p_prem_1: "Unlimited generations", p_prem_2: "ElevenLabs premium voices", p_prem_3: "FreeSWITCH .wav export", p_prem_4: "Configurable delay & fade-out", p_prem_5: "Adjustable music volume", p_prem_6: "Priority support",
+btn_free: "Get Started", btn_prem: "Buy Premium"
+},
+it: {
+hero_sub: "Genera file audio IVR professionali per il tuo centralino. Combina musica di sottofondo da YouTube con sintesi vocale neurale in pochi minuti.",
+f1_title: "Ricerca Musica YouTube", f1_desc: "Cerca e seleziona musica royalty-free direttamente da YouTube. Download ed estrazione audio automatici.",
+f2_title: "Sintesi Vocale Neurale", f2_desc: "Voci italiane e multilingua di alta qualita con Microsoft Edge-TTS (gratis) o ElevenLabs (premium).",
+f3_title: "Mixaggio Audio Professionale", f3_desc: "Mixaggio automatico voce + musica con normalizzazione volume, delay configurabile, fade-out e controllo volume.",
+f4_title: "Export per Centralini", f4_desc: "Esporta direttamente in formato Asterisk (.ulaw 8kHz) e FreeSWITCH (.wav 16kHz). Importa nelle System Recordings con un click.",
+f5_title: "Integrazione FreePBX", f5_desc: "Modulo FreePBX nativo. Installa dalla GUI, genera audio, importa in Asterisk - tutto senza uscire da FreePBX.",
+f6_title: "Elaborazione Cloud Sicura", f6_desc: "La generazione audio avviene nel cloud. Il tuo FreePBX invia solo il testo e riceve il file audio finito.",
+how_title: "Come Funziona", s1_title: "Scegli la Musica", s1_desc: "Cerca su YouTube musica royalty-free e seleziona il brano.",
+s2_title: "Scrivi il Testo", s2_desc: "Scrivi il messaggio IVR, seleziona una voce neurale e configura le impostazioni audio.",
+s3_title: "Genera", s3_desc: "Il nostro motore cloud mixa voce e musica con elaborazione audio professionale.",
+s4_title: "Importa nel PBX", s4_desc: "Un click per importare il file nelle System Recordings di Asterisk. Pronto all'uso.",
+formats_title: "Formati di Output", compat_title: "Compatibilita", pricing_title: "Prezzi",
+p_free_1: "3 generazioni al mese", p_free_2: "Voci neurali Edge-TTS", p_free_3: "Ricerca musica YouTube", p_free_4: "Export Asterisk .ulaw", p_free_5: "Importa in System Recordings",
+p_prem_1: "Generazioni illimitate", p_prem_2: "Voci premium ElevenLabs", p_prem_3: "Export FreeSWITCH .wav", p_prem_4: "Delay e fade-out configurabili", p_prem_5: "Volume musica regolabile", p_prem_6: "Supporto prioritario",
+btn_free: "Inizia Gratis", btn_prem: "Acquista Premium"
+},
+de: {
+hero_sub: "Erstellen Sie professionelle IVR-Audiodateien fuer Ihre Telefonanlage. Kombinieren Sie YouTube-Hintergrundmusik mit neuronaler Sprachsynthese in wenigen Minuten.",
+f1_title: "YouTube-Musiksuche", f1_desc: "Suchen und waehlen Sie lizenzfreie Hintergrundmusik direkt von YouTube. Automatischer Download und Audio-Extraktion.",
+f2_title: "Neuronale Sprachsynthese", f2_desc: "Hochwertige mehrsprachige Stimmen mit Microsoft Edge-TTS (kostenlos) oder ElevenLabs (Premium).",
+f3_title: "Professionelles Audio-Mixing", f3_desc: "Automatisches Sprache + Musik Mixing mit Lautstaerkenormalisierung, konfigurierbarer Verzoegerung, Fade-out und Lautstaerkeregelung.",
+f4_title: "PBX-fertiger Export", f4_desc: "Direkter Export in Asterisk (.ulaw 8kHz) und FreeSWITCH (.wav 16kHz) Formate. Import in System Recordings mit einem Klick.",
+f5_title: "FreePBX-Integration", f5_desc: "Natives FreePBX-Modul. Installation ueber GUI, Audio generieren, in Asterisk importieren - alles ohne FreePBX zu verlassen.",
+f6_title: "Sichere Cloud-Verarbeitung", f6_desc: "Die Audiogenerierung erfolgt in der Cloud. Ihr FreePBX sendet nur Text und empfaengt die fertige Audiodatei.",
+how_title: "So funktioniert es", s1_title: "Musik waehlen", s1_desc: "Suchen Sie auf YouTube nach lizenzfreier Hintergrundmusik.",
+s2_title: "Text schreiben", s2_desc: "Geben Sie Ihre IVR-Nachricht ein, waehlen Sie eine Stimme und konfigurieren Sie die Einstellungen.",
+s3_title: "Generieren", s3_desc: "Unsere Cloud-Engine mischt Sprache und Musik mit professioneller Audioverarbeitung.",
+s4_title: "In PBX importieren", s4_desc: "Ein Klick um die Datei in die Asterisk System Recordings zu importieren.",
+formats_title: "Ausgabeformate", compat_title: "Kompatibilitaet", pricing_title: "Preise",
+p_free_1: "3 Generierungen pro Monat", p_free_2: "Edge-TTS neuronale Stimmen", p_free_3: "YouTube-Musiksuche", p_free_4: "Asterisk .ulaw Export", p_free_5: "System Recordings Import",
+p_prem_1: "Unbegrenzte Generierungen", p_prem_2: "ElevenLabs Premium-Stimmen", p_prem_3: "FreeSWITCH .wav Export", p_prem_4: "Konfigurierbares Delay & Fade-out", p_prem_5: "Einstellbare Musiklautstaerke", p_prem_6: "Prioritaetssupport",
+btn_free: "Kostenlos starten", btn_prem: "Premium kaufen"
+},
+es: {
+hero_sub: "Genera archivos de audio IVR profesionales para tu centralita. Combina musica de fondo de YouTube con sintesis de voz neuronal en minutos.",
+f1_title: "Busqueda de Musica YouTube", f1_desc: "Busca y selecciona musica libre de derechos directamente de YouTube. Descarga y extraccion de audio automatica.",
+f2_title: "Sintesis de Voz Neuronal", f2_desc: "Voces multilingues de alta calidad con Microsoft Edge-TTS (gratis) o ElevenLabs (premium).",
+f3_title: "Mezcla de Audio Profesional", f3_desc: "Mezcla automatica de voz + musica con normalizacion de volumen, delay configurable, fade-out y control de volumen.",
+f4_title: "Exportacion para Centralitas", f4_desc: "Exporta directamente a formatos Asterisk (.ulaw 8kHz) y FreeSWITCH (.wav 16kHz). Importa a System Recordings con un clic.",
+f5_title: "Integracion FreePBX", f5_desc: "Modulo FreePBX nativo. Instala desde la GUI, genera audio, importa a Asterisk - todo sin salir de FreePBX.",
+f6_title: "Procesamiento Cloud Seguro", f6_desc: "La generacion de audio se realiza en la nube. Tu FreePBX solo envia texto y recibe el archivo de audio terminado.",
+how_title: "Como Funciona", s1_title: "Elige la Musica", s1_desc: "Busca en YouTube musica libre de derechos y selecciona tu pista.",
+s2_title: "Escribe tu Guion", s2_desc: "Escribe tu mensaje IVR, selecciona una voz neuronal y configura los ajustes de audio.",
+s3_title: "Genera", s3_desc: "Nuestro motor en la nube mezcla voz y musica con procesamiento de audio profesional.",
+s4_title: "Importa al PBX", s4_desc: "Un clic para importar el archivo en las System Recordings de Asterisk. Listo para usar.",
+formats_title: "Formatos de Salida", compat_title: "Compatibilidad", pricing_title: "Precios",
+p_free_1: "3 generaciones al mes", p_free_2: "Voces neurales Edge-TTS", p_free_3: "Busqueda de musica YouTube", p_free_4: "Exportacion Asterisk .ulaw", p_free_5: "Importacion a System Recordings",
+p_prem_1: "Generaciones ilimitadas", p_prem_2: "Voces premium ElevenLabs", p_prem_3: "Exportacion FreeSWITCH .wav", p_prem_4: "Delay y fade-out configurables", p_prem_5: "Volumen de musica ajustable", p_prem_6: "Soporte prioritario",
+btn_free: "Empezar Gratis", btn_prem: "Comprar Premium"
+},
+fr: {
+hero_sub: "Generez des fichiers audio IVR professionnels pour votre standard telephonique. Combinez de la musique YouTube avec la synthese vocale neuronale en quelques minutes.",
+f1_title: "Recherche Musique YouTube", f1_desc: "Recherchez et selectionnez de la musique libre de droits directement depuis YouTube. Telechargement et extraction audio automatiques.",
+f2_title: "Synthese Vocale Neuronale", f2_desc: "Voix multilingues de haute qualite avec Microsoft Edge-TTS (gratuit) ou ElevenLabs (premium).",
+f3_title: "Mixage Audio Professionnel", f3_desc: "Mixage automatique voix + musique avec normalisation du volume, delai configurable, fade-out et controle du volume.",
+f4_title: "Export pour Standards", f4_desc: "Exportez directement aux formats Asterisk (.ulaw 8kHz) et FreeSWITCH (.wav 16kHz). Importez dans les System Recordings en un clic.",
+f5_title: "Integration FreePBX", f5_desc: "Module FreePBX natif. Installez depuis l'interface, generez l'audio, importez dans Asterisk - sans quitter FreePBX.",
+f6_title: "Traitement Cloud Securise", f6_desc: "La generation audio se fait dans le cloud. Votre FreePBX envoie uniquement le texte et recoit le fichier audio fini.",
+how_title: "Comment ca Marche", s1_title: "Choisir la Musique", s1_desc: "Recherchez sur YouTube de la musique libre de droits et selectionnez votre piste.",
+s2_title: "Ecrire le Texte", s2_desc: "Tapez votre message IVR, selectionnez une voix neuronale et configurez les parametres audio.",
+s3_title: "Generer", s3_desc: "Notre moteur cloud mixe voix et musique avec un traitement audio professionnel.",
+s4_title: "Importer dans le PBX", s4_desc: "Un clic pour importer le fichier dans les System Recordings d'Asterisk. Pret a l'emploi.",
+formats_title: "Formats de Sortie", compat_title: "Compatibilite", pricing_title: "Tarifs",
+p_free_1: "3 generations par mois", p_free_2: "Voix neurales Edge-TTS", p_free_3: "Recherche musique YouTube", p_free_4: "Export Asterisk .ulaw", p_free_5: "Import System Recordings",
+p_prem_1: "Generations illimitees", p_prem_2: "Voix premium ElevenLabs", p_prem_3: "Export FreeSWITCH .wav", p_prem_4: "Delai et fade-out configurables", p_prem_5: "Volume musique reglable", p_prem_6: "Support prioritaire",
+btn_free: "Commencer Gratuitement", btn_prem: "Acheter Premium"
+},
+zh: {
+hero_sub: "Wei nin de PBX dian hua xi tong sheng cheng zhuan ye de IVR yin pin wen jian. Jiang YouTube bei jing yin yue yu shen jing yu yin he cheng xiang jie he.",
+f1_title: "YouTube yin yue sou suo", f1_desc: "Zhi jie cong YouTube sou suo he xuan ze mian fei bei jing yin yue. Zi dong xia zai he ti qu yin pin.",
+f2_title: "Shen jing yu yin he cheng", f2_desc: "Gao zhi liang duo yu yan yu yin, zhi chi Microsoft Edge-TTS (mian fei) he ElevenLabs (gao ji ban).",
+f3_title: "Zhuan ye yin pin hun yin", f3_desc: "Zi dong yu yin + yin yue hun yin, dai you yin liang gui yi hua, ke pei zhi yan chi, dan chu he yin liang kong zhi.",
+f4_title: "PBX jiu xu dao chu", f4_desc: "Zhi jie dao chu wei Asterisk (.ulaw 8kHz) he FreeSWITCH (.wav 16kHz) ge shi.",
+f5_title: "FreePBX ji cheng", f5_desc: "Yuan sheng FreePBX mo kuai. Cong GUI an zhuang, sheng cheng yin pin, dao ru Asterisk.",
+f6_title: "An quan yun chu li", f6_desc: "Yin pin sheng cheng zai yun duan jin xing. Nin de FreePBX zhi fa song wen ben bing jie shou wan cheng de yin pin wen jian.",
+how_title: "Ru he gong zuo", s1_title: "Xuan ze yin yue", s1_desc: "Zai YouTube shang sou suo mian fei bei jing yin yue.",
+s2_title: "Bian xie wen ben", s2_desc: "Shu ru nin de IVR xiao xi, xuan ze shen jing yu yin.",
+s3_title: "Sheng cheng", s3_desc: "Wo men de yun yin qing hun he yu yin he yin yue.",
+s4_title: "Dao ru PBX", s4_desc: "Yi jian dao ru Asterisk System Recordings.",
+formats_title: "Shu chu ge shi", compat_title: "Jian rong xing", pricing_title: "Jia ge",
+p_free_1: "Mei yue 3 ci sheng cheng", p_free_2: "Edge-TTS shen jing yu yin", p_free_3: "YouTube yin yue sou suo", p_free_4: "Asterisk .ulaw dao chu", p_free_5: "System Recordings dao ru",
+p_prem_1: "Wu xian sheng cheng", p_prem_2: "ElevenLabs gao ji yu yin", p_prem_3: "FreeSWITCH .wav dao chu", p_prem_4: "Ke pei zhi yan chi he dan chu", p_prem_5: "Ke tiao yin yue yin liang", p_prem_6: "You xian zhi chi",
+btn_free: "Mian fei kai shi", btn_prem: "Gou mai gao ji ban"
+},
+ru: {
+hero_sub: "Sozdavayte professionalnye IVR-audiofayly dlya vashey ATS. Sochetayte fonovuyu muzyku s YouTube s neyronnym sintezmom rechi za schitannye minuty.",
+f1_title: "Poisk muzyki YouTube", f1_desc: "Ishchite i vybirajte besplatnuyu fonovuyu muzyku pryamo s YouTube. Avtomaticheskaya zagruzka i izvlecheniye audio.",
+f2_title: "Neyronnyy sintez rechi", f2_desc: "Vysokokachestvennye mnogoYazychnye golosa na baze Microsoft Edge-TTS (besplatno) ili ElevenLabs (premium).",
+f3_title: "Professionalnoye svedeniye", f3_desc: "Avtomaticheskoye svedeniye golosa + muzyki s normalizatsiyey gromkosti, nastrayivayemoy zaderzhkoy i zatukhaniYem.",
+f4_title: "Eksport dlya ATS", f4_desc: "Pryamoy eksport v formaty Asterisk (.ulaw 8kHz) i FreeSWITCH (.wav 16kHz).",
+f5_title: "Integratsiya s FreePBX", f5_desc: "Nativnyy modul FreePBX. Ustanovka cherez GUI, generatsiya audio, import v Asterisk.",
+f6_title: "Bezopashnaya oblachnaya obrabotka", f6_desc: "Generatsiya audio proiskhodit v oblake. Vash FreePBX otpravlyayet tolko tekst i poluchayet gotovyy audiofayl.",
+how_title: "Kak eto rabotayet", s1_title: "Vyberite muzyku", s1_desc: "Ishchite na YouTube besplatnuyu fonovuyu muzyku.",
+s2_title: "Napishite tekst", s2_desc: "Vvedite vashe IVR-soobshcheniye, vyberite neyronnyy golos.",
+s3_title: "Sgeneriruyte", s3_desc: "Nash oblachnyy dvizhok miksiruyet golos i muzyku.",
+s4_title: "Importiruyte v ATS", s4_desc: "Odin klik dlya importa faylav v System Recordings Asterisk.",
+formats_title: "Formaty vyvoda", compat_title: "Sovmestimost", pricing_title: "Tseny",
+p_free_1: "3 generatsii v mesyats", p_free_2: "Neyronnyye golosa Edge-TTS", p_free_3: "Poisk muzyki YouTube", p_free_4: "Eksport Asterisk .ulaw", p_free_5: "Import System Recordings",
+p_prem_1: "Neogranichennaya generatsiya", p_prem_2: "Premium golosa ElevenLabs", p_prem_3: "Eksport FreeSWITCH .wav", p_prem_4: "Nastrayivayemaya zaderzhka i zatukhaniye", p_prem_5: "Reguliruyemaya gromkost muzyki", p_prem_6: "Prioritetnaya podderzhka",
+btn_free: "Nachat besplatno", btn_prem: "Kupit Premium"
+}
+};
+
+function setLang(lang) {
+  var t = translations[lang] || translations.en;
+  var els = document.querySelectorAll('[data-i18n]');
+  for (var i = 0; i < els.length; i++) {
+    var key = els[i].getAttribute('data-i18n');
+    if (t[key]) els[i].textContent = t[key];
+  }
+  document.documentElement.lang = lang;
+  localStorage.setItem('ivrs_lang', lang);
+}
+
+// Auto-detect language
+var saved = localStorage.getItem('ivrs_lang');
+if (saved) {
+  document.getElementById('langSelect').value = saved;
+  setLang(saved);
+} else {
+  var bl = (navigator.language || 'en').substring(0, 2);
+  if (translations[bl]) {
+    document.getElementById('langSelect').value = bl;
+    setLang(bl);
+  }
+}
+</script>
+</body>
+</html>
