@@ -117,7 +117,7 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,-ap
 
 <section class="section">
 <h2 class="section-title" data-i18n="pricing_title">Pricing</h2>
-<div class="pricing">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;max-width:900px;margin:0 auto">
 <div class="plan">
 <h3>Free</h3>
 <div class="price">&euro;0<span>/mo</span></div>
@@ -131,8 +131,8 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,-ap
 <a href="#" class="btn btn-outline" data-i18n="btn_free">Get Started</a>
 </div>
 <div class="plan featured">
-<h3>Premium</h3>
-<div class="price">&euro;99<span>/year</span></div>
+<h3>Pro Monthly</h3>
+<div class="price">&euro;9.99<span>/mo</span></div>
 <ul>
 <li data-i18n="p_prem_1">Unlimited generations</li>
 <li data-i18n="p_prem_2">ElevenLabs premium voices</li>
@@ -140,8 +140,25 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,-ap
 <li data-i18n="p_prem_4">Configurable delay &amp; fade-out</li>
 <li data-i18n="p_prem_5">Adjustable music volume</li>
 <li data-i18n="p_prem_6">Priority support</li>
+<li data-i18n="p_prem_7">Batch generation (up to 20)</li>
 </ul>
-<a href="#" class="btn btn-primary" data-i18n="btn_prem">Buy Premium</a>
+<a href="#" class="btn btn-primary" data-i18n="btn_prem">Subscribe Monthly</a>
+</div>
+<div class="plan" style="border-color:var(--green);position:relative">
+<div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--green);color:white;padding:4px 16px;border-radius:12px;font-size:.7rem;font-weight:700;letter-spacing:1px">BEST VALUE</div>
+<h3>Pro Annual</h3>
+<div class="price">&euro;89<span>/yr</span></div>
+<p style="color:var(--green);font-size:.85rem;margin-bottom:8px;font-weight:600">Save 26% vs monthly</p>
+<ul>
+<li data-i18n="p_prem_1">Unlimited generations</li>
+<li data-i18n="p_prem_2">ElevenLabs premium voices</li>
+<li data-i18n="p_prem_3">FreeSWITCH .wav export</li>
+<li data-i18n="p_prem_4">Configurable delay &amp; fade-out</li>
+<li data-i18n="p_prem_5">Adjustable music volume</li>
+<li data-i18n="p_prem_6">Priority support</li>
+<li data-i18n="p_prem_7">Batch generation (up to 20)</li>
+</ul>
+<a href="#" class="btn btn-primary" style="background:var(--green)" data-i18n="btn_annual">Subscribe Annual</a>
 </div>
 </div>
 </section>
